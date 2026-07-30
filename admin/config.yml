@@ -1,0 +1,43 @@
+backend:
+  name: github
+  repo: 你的GitHub用户名/my-contact-page
+  branch: main
+
+
+media_folder: "images"
+
+
+collections:
+
+  - name: "page"
+    label: "页面内容"
+
+    files:
+
+      - file: "content/page.json"
+
+        label: "首页"
+
+        name: "home"
+
+        fields:
+
+          - label: "中文标题"
+            name: "title_zh"
+            widget: string
+
+          - label: "英文标题"
+            name: "title_en"
+            widget: string
+
+          - label: "西班牙标题"
+            name: "title_es"
+            widget: string
+
+          - label: "WhatsApp"
+            name: "whatsapp"
+            widget: string
+
+          - label: "Telegram"
+            name: "telegram"
+            widget: string
