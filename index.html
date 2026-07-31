@@ -180,40 +180,26 @@ C
 
 
 <h1 id="title">
-欢迎联系我
 </h1>
 
 
-<p class="desc" id="desc">
-
-通过以下方式联系我。
-
+<p id="desc">
 </p>
 
 
 
 <!-- 修改这里 -->
 
-<a class="contact-btn whatsapp"
-
-href="https://wa.me/你的号码"
-
-target="_blank">
-
+<a id="whatsapp"
+href="#">
 WhatsApp
-
 </a>
 
 
 
-<a class="contact-btn telegram"
-
-href="https://t.me/你的用户名"
-
-target="_blank">
-
+<a id="telegram"
+href="#">
 Telegram
-
 </a>
 
 
@@ -322,7 +308,41 @@ content[lang].footer;
 
 </script>
 
+<script>
 
+
+fetch('/content/page.json')
+
+
+.then(response => response.json())
+
+
+.then(data => {
+
+
+document.getElementById("title").innerHTML =
+data.title_zh;
+
+
+document.getElementById("desc").innerHTML =
+data.description_zh;
+
+
+
+document.getElementById("whatsapp").href =
+data.whatsapp;
+
+
+
+document.getElementById("telegram").href =
+data.telegram;
+
+
+
+});
+
+
+</script>
 
 </body>
 
