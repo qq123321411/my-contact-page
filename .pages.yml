@@ -1,0 +1,66 @@
+media:
+  input: images
+  output: /images
+
+
+content:
+  - name: page
+    label: 首页内容
+    type: file
+    path: content/page.json
+
+    fields:
+
+      - name: title_zh
+        label: 中文标题
+        type: string
+
+      - name: title_en
+        label: English Title
+        type: string
+
+      - name: title_es
+        label: Título Español
+        type: string
+
+
+      - name: description_zh
+        label: 中文介绍
+        type: text
+
+      - name: description_en
+        label: English Description
+        type: text
+
+      - name: description_es
+        label: Spanish Description
+        type: text
+
+
+
+      - name: whatsapp
+        label: WhatsApp链接
+        type: string
+
+
+      - name: telegram
+        label: Telegram链接
+        type: string
+
+
+      - name: button_link
+        label: 按钮跳转链接
+        type: string
+
+
+      - name: button_text_zh
+        label: 中文按钮
+        type: string
+
+      - name: button_text_en
+        label: English Button
+        type: string
+
+      - name: button_text_es
+        label: Spanish Button
+        type: string
