@@ -1,10 +1,11 @@
 backend:
   name: github
-  repo: 你的GitHub用户名/my-contact-page
+  repo: qq123321411/my-contact-page
   branch: main
 
 
 media_folder: "images"
+public_folder: "/images"
 
 
 collections:
@@ -41,3 +42,4 @@ collections:
           - label: "Telegram"
             name: "telegram"
             widget: string
+
