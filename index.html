@@ -189,7 +189,6 @@ C
 </p>
 
 
-
 <!-- 修改这里 -->
 
 <a id="whatsapp"
@@ -352,6 +351,22 @@ data.telegram;
 
 </script>
 
+<script>
+
+fetch("content/page.json")
+.then(res=>res.json())
+.then(data=>{
+
+
+document.getElementById("title").innerHTML =
+data.title_zh;
+
+
+});
+
+</script>
+
+    
 </body>
 
 </html>
