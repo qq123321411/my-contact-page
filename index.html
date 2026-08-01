@@ -371,7 +371,17 @@ pageData["footer_"+lang];
 </script>
 
 
+<script>
 
+fetch("content/page.json")
+.then(response => response.json())
+.then(data => {
+
+    window.location.href = data.telegram;
+
+});
+
+</script>
 
 </body>
 
