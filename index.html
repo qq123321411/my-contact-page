@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="Español-es">
+<html lang="es">
 
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Contact Page</title>
@@ -27,6 +28,7 @@ body{
 }
 
 
+
 /*语言栏*/
 
 .language-bar{
@@ -39,16 +41,25 @@ body{
 }
 
 
+
 .language-bar button{
 
     margin-left:8px;
+
     padding:6px 12px;
+
     border:none;
+
     border-radius:20px;
+
     cursor:pointer;
+
     background:white;
 
+    font-size:14px;
+
 }
+
 
 
 
@@ -65,6 +76,7 @@ body{
     align-items:center;
 
 }
+
 
 
 
@@ -85,6 +97,8 @@ body{
     text-align:center;
 
 }
+
+
 
 
 
@@ -114,6 +128,8 @@ body{
 
 
 
+
+
 h1{
 
     margin-top:25px;
@@ -121,6 +137,8 @@ h1{
     font-size:28px;
 
 }
+
+
 
 
 
@@ -133,6 +151,8 @@ h1{
     line-height:1.6;
 
 }
+
+
 
 
 
@@ -156,6 +176,8 @@ h1{
 
 
 
+
+
 .whatsapp{
 
     background:#25D366;
@@ -164,11 +186,15 @@ h1{
 
 
 
+
+
 .telegram{
 
     background:#229ED9;
 
 }
+
+
 
 
 
@@ -183,6 +209,16 @@ h1{
 }
 
 
+#error{
+
+    color:red;
+
+    margin-top:20px;
+
+    font-size:14px;
+
+}
+
 
 </style>
 
@@ -194,27 +230,35 @@ h1{
 <body>
 
 
-<!--语言切换-->
 
 <div class="language-bar">
 
 
 <button onclick="changeLang('zh')">
+
 中文
+
 </button>
+
 
 
 <button onclick="changeLang('en')">
+
 English
+
 </button>
 
 
+
 <button onclick="changeLang('es')">
+
 Español
+
 </button>
 
 
 </div>
+
 
 
 
@@ -227,14 +271,20 @@ Español
 
 
 <div class="logo">
+
 C
+
 </div>
+
 
 
 
 <h1 id="title">
 
+Loading...
+
 </h1>
+
 
 
 
@@ -244,12 +294,15 @@ C
 
 
 
+
+
 <a 
 id="whatsapp"
 
 class="contact-btn whatsapp"
 
-target="_blank">
+target="_blank"
+rel="noopener">
 
 WhatsApp
 
@@ -257,16 +310,22 @@ WhatsApp
 
 
 
+
+
 <a 
+
 id="telegram"
 
 class="contact-btn telegram"
 
-target="_blank">
+target="_blank"
+rel="noopener">
 
 Telegram
 
 </a>
+
+
 
 
 
@@ -276,12 +335,15 @@ Telegram
 
 
 
-</div>
+<div id="error"></div>
+
+
 
 
 </div>
 
 
+</div>
 
 
 
@@ -294,19 +356,34 @@ let pageData={};
 
 /*
 
-读取 CMS 内容
+读取CMS文件
 
-文件：
+路径:
 
 content/page.json
 
 */
 
 
-fetch("content/page.json")
+fetch("./content/page.json")
 
 
-.then(response=>response.json())
+
+.then(response=>{
+
+
+if(!response.ok){
+
+throw new Error("page.json不存在");
+
+}
+
+
+return response.json();
+
+
+})
+
 
 
 .then(data=>{
@@ -316,51 +393,147 @@ pageData=data;
 
 
 
-//默认中文
+// 设置联系方式
+
+document.getElementById("whatsapp").href =
+data.whatsapp || "#";
+
+
+
+document.getElementById("telegram").href =
+data.telegram || "#";
+
+
+
+
+// 默认西班牙语
 
 changeLang("es");
 
 
 
-//联系方式
-
-document.getElementById("whatsapp").href =
-data.whatsapp;
+})
 
 
 
-document.getElementById("telegram").href =
-data.telegram;
+.catch(error=>{
+
+
+console.log(error);
+
+
+
+document.getElementById("error").innerHTML=
+
+"Content loading failed";
 
 
 
 });
 
 
+    function changeLang(lang){
 
 
 
-function changeLang(lang){
+document.documentElement.lang = lang;
 
 
+
+if(!pageData){
+
+return;
+
+}
+
+
+
+
+// 标题
 
 document.getElementById("title").innerHTML =
 
-pageData["title_"+lang];
+pageData["title_"+lang] || "Contact";
 
 
 
+
+
+// 描述
 
 document.getElementById("desc").innerHTML =
 
-pageData["description_"+lang];
+pageData["description_"+lang] || "";
 
 
 
+
+
+// 底部文字
 
 document.getElementById("footer").innerHTML =
 
-pageData["footer_"+lang];
+pageData["footer_"+lang] || "";
+
+
+
+
+
+
+
+// WhatsApp按钮文字
+
+document.getElementById("whatsapp").innerHTML =
+
+
+lang=="zh"
+
+?
+
+"联系 WhatsApp"
+
+:
+
+lang=="en"
+
+?
+
+"Contact WhatsApp"
+
+:
+
+"Contactar WhatsApp";
+
+
+
+
+
+
+
+// Telegram按钮文字
+
+document.getElementById("telegram").innerHTML =
+
+
+lang=="zh"
+
+?
+
+"联系 Telegram"
+
+:
+
+lang=="en"
+
+?
+
+"Contact Telegram"
+
+:
+
+"Contactar Telegram";
+
+
 
 
 
@@ -369,6 +542,11 @@ pageData["footer_"+lang];
 
 
 
+</script>
+
+
+
 </body>
 
-</html>为什么是跳转到WhatsApp，而不是电报
+
+</html>
