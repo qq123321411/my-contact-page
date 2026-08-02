@@ -1,16 +1,10 @@
 {
-"title_es":"你的西班牙标题",
-"description_es":"你的西班牙介绍",
-"footer_es":"底部文字",
-
-"title_en":"English title",
-"description_en":"English description",
-"footer_en":"Footer",
-
-"title_zh":"中文标题",
-"description_zh":"中文介绍",
-"footer_zh":"底部",
-
-"whatsapp":"https://wa.me/xxxx",
-"telegram":"https://t.me/xxxx"
+  "title_zh": "发送消息",
+  "title_en": "Send message",
+  "title_es": "Enviar mensaje",
+  "description_zh": "发送消息",
+  "description_en": "Send message",
+  "description_es": "Enviar mensaje",
+  "whatsapp": "https://wa.me/8525682842511",
+  "telegram": "https://t.me/85252952138"
 }
