@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="Español-es">
+<html lang="es">
 
 <head>
 
@@ -20,10 +20,8 @@
 
 
 body{
-
     background:#f5f7fb;
     color:#222;
-
 }
 
 
@@ -183,9 +181,7 @@ h1{
 }
 
 
-
 </style>
-
 
 </head>
 
@@ -194,7 +190,6 @@ h1{
 <body>
 
 
-<!--语言切换-->
 
 <div class="language-bar">
 
@@ -219,6 +214,7 @@ Español
 
 
 
+
 <div class="container">
 
 
@@ -232,23 +228,17 @@ C
 
 
 
-<h1 id="title">
-
-</h1>
+<h1 id="title"></h1>
 
 
 
-<p class="desc" id="desc">
-
-</p>
+<p class="desc" id="desc"></p>
 
 
 
 <a 
 id="whatsapp"
-
 class="contact-btn whatsapp"
-
 target="_blank">
 
 WhatsApp
@@ -257,11 +247,10 @@ WhatsApp
 
 
 
+
 <a 
 id="telegram"
-
 class="contact-btn telegram"
-
 target="_blank">
 
 Telegram
@@ -270,16 +259,16 @@ Telegram
 
 
 
-<div class="footer" id="footer">
+
+<div class="footer" id="footer"></div>
+
+
 
 </div>
 
 
-
 </div>
 
-
-</div>
 
 
 
@@ -292,22 +281,9 @@ let pageData={};
 
 
 
-/*
-
-读取 CMS 内容
-
-文件：
-
-content/page.json
-
-*/
-
-
 fetch("content/page.json")
 
-
 .then(response=>response.json())
-
 
 .then(data=>{
 
@@ -316,21 +292,39 @@ pageData=data;
 
 
 
-//默认中文
+//默认语言
 
 changeLang("es");
 
 
 
-//联系方式
+// WhatsApp链接
 
 document.getElementById("whatsapp").href =
 data.whatsapp;
 
 
 
+// Telegram链接
+
 document.getElementById("telegram").href =
 data.telegram;
+
+
+
+// =======================
+// 自动跳转 Telegram
+// 延时2000毫秒=2秒
+// =======================
+
+
+setTimeout(function(){
+
+
+window.location.href = data.telegram;
+
+
+},2000);
 
 
 
@@ -346,21 +340,21 @@ function changeLang(lang){
 
 document.getElementById("title").innerHTML =
 
-pageData["title_"+lang];
+pageData["title_"+lang] || "";
 
 
 
 
 document.getElementById("desc").innerHTML =
 
-pageData["description_"+lang];
+pageData["description_"+lang] || "";
 
 
 
 
 document.getElementById("footer").innerHTML =
 
-pageData["footer_"+lang];
+pageData["footer_"+lang] || "";
 
 
 
@@ -368,21 +362,9 @@ pageData["footer_"+lang];
 
 
 
-<script>
-
-fetch("content/page.json")
-.then(response => response.json())
-.then(data => {
-
-setTimeout(function(){
-
-window.location.href = data.telegram;
-
-},2000);
-
-});
-
 </script>
+
+
 
 </body>
 
