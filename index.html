@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="Español-es">
 
 <head>
 
@@ -20,8 +20,10 @@
 
 
 body{
+
     background:#f5f7fb;
     color:#222;
+
 }
 
 
@@ -181,7 +183,9 @@ h1{
 }
 
 
+
 </style>
+
 
 </head>
 
@@ -190,6 +194,7 @@ h1{
 <body>
 
 
+<!--语言切换-->
 
 <div class="language-bar">
 
@@ -214,7 +219,6 @@ Español
 
 
 
-
 <div class="container">
 
 
@@ -228,18 +232,23 @@ C
 
 
 
-<h1 id="title"></h1>
+<h1 id="title">
+
+</h1>
 
 
 
-<p class="desc" id="desc"></p>
+<p class="desc" id="desc">
+
+</p>
 
 
 
 <a 
 id="whatsapp"
+
 class="contact-btn whatsapp"
-href="#"
+
 target="_blank">
 
 WhatsApp
@@ -248,11 +257,11 @@ WhatsApp
 
 
 
-
 <a 
 id="telegram"
+
 class="contact-btn telegram"
-href="#"
+
 target="_blank">
 
 Telegram
@@ -261,8 +270,9 @@ Telegram
 
 
 
+<div class="footer" id="footer">
 
-<div class="footer" id="footer"></div>
+</div>
 
 
 
@@ -270,7 +280,6 @@ Telegram
 
 
 </div>
-
 
 
 
@@ -278,32 +287,50 @@ Telegram
 
 <script>
 
-let pageData = {};
+
+let pageData={};
+
+
+
+/*
+
+读取 CMS 内容
+
+文件：
+
+content/page.json
+
+*/
 
 
 fetch("content/page.json")
 
-.then(response => response.json())
 
-.then(data => {
-
-
-    pageData = data;
+.then(response=>response.json())
 
 
-    // 默认语言
-    changeLang("es");
+.then(data=>{
 
 
-    // WhatsApp按钮
-    document.getElementById("whatsapp").href = data.whatsapp;
-
-
-    // Telegram按钮
-    document.getElementById("telegram").href = data.telegram;
+pageData=data;
 
 
 
+//默认中文
+
+changeLang("es");
+
+
+
+//联系方式
+
+document.getElementById("whatsapp").href =
+data.whatsapp;
+
+
+
+document.getElementById("telegram").href =
+data.telegram;
 
 
 
@@ -316,27 +343,32 @@ fetch("content/page.json")
 function changeLang(lang){
 
 
+
 document.getElementById("title").innerHTML =
-pageData["title_"+lang] || "";
+
+pageData["title_"+lang];
+
 
 
 
 document.getElementById("desc").innerHTML =
-pageData["description_"+lang] || "";
+
+pageData["description_"+lang];
+
 
 
 
 document.getElementById("footer").innerHTML =
-pageData["footer_"+lang] || "";
+
+pageData["footer_"+lang];
+
 
 
 }
 
 
 
-</script>
-
 
 </body>
 
-</html>
+</html>为什么是跳转到WhatsApp，而不是电报
