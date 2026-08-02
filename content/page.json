@@ -1,10 +1,16 @@
 {
-  "title_zh": "添加好友",
-  "title_en": "Contact Me",
-  "title_es": "Contáctame",
-  "description_zh": "如果您有任何问题，可以随时联系我。",
-  "description_en": "Feel free to contact me anytime.",
-  "description_es": "Puedes contactarme en cualquier momento.",
-  "whatsapp": "https://wa.me/85256828425",
-  "telegram": "https://t.me/85252952138"
+"title_es":"你的西班牙标题",
+"description_es":"你的西班牙介绍",
+"footer_es":"底部文字",
+
+"title_en":"English title",
+"description_en":"English description",
+"footer_en":"Footer",
+
+"title_zh":"中文标题",
+"description_zh":"中文介绍",
+"footer_zh":"底部",
+
+"whatsapp":"https://wa.me/xxxx",
+"telegram":"https://t.me/xxxx"
 }
