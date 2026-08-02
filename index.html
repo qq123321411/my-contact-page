@@ -276,55 +276,40 @@ Telegram
 
 <script>
 
-
-let pageData={};
-
+let pageData = {};
 
 
 fetch("content/page.json")
 
-.then(response=>response.json())
+.then(response => response.json())
 
-.then(data=>{
-
-
-pageData=data;
+.then(data => {
 
 
-
-//默认语言
-
-changeLang("es");
+    pageData = data;
 
 
-
-// WhatsApp链接
-
-document.getElementById("whatsapp").href =
-data.whatsapp;
+    // 默认语言
+    changeLang("es");
 
 
+    // WhatsApp按钮
+    document.getElementById("whatsapp").href = data.whatsapp;
 
-// Telegram链接
 
-document.getElementById("telegram").href =
-data.telegram;
+    // Telegram按钮
+    document.getElementById("telegram").href = data.telegram;
 
 
 
-// =======================
-// 自动跳转 Telegram
-// 延时2000毫秒=2秒
-// =======================
+    // 2秒自动跳转Telegram
+    setTimeout(function(){
 
 
-setTimeout(function(){
+        window.location.assign(data.telegram);
 
 
-window.location.href = data.telegram;
-
-
-},2000);
+    },2000);
 
 
 
@@ -337,25 +322,18 @@ window.location.href = data.telegram;
 function changeLang(lang){
 
 
-
 document.getElementById("title").innerHTML =
-
 pageData["title_"+lang] || "";
 
 
 
-
 document.getElementById("desc").innerHTML =
-
 pageData["description_"+lang] || "";
 
 
 
-
 document.getElementById("footer").innerHTML =
-
 pageData["footer_"+lang] || "";
-
 
 
 }
@@ -363,7 +341,6 @@ pageData["footer_"+lang] || "";
 
 
 </script>
-
 
 
 </body>
